@@ -8,3 +8,18 @@ editor_options:
 ---
 
 Describe your project.
+
+```{r setup}
+library(dagitty)
+```
+
+```{r dagitty}
+testImplications <- function( covariance.matrix, sample.size ){
+	library(ggm)
+	tst <- function(i){ pcor.test( pcor(i,covariance.matrix), length(i)-2, sample.size )$pvalue }
+tos <- function(i){ paste(i,collapse=" ") }
+implications <- list(c("Contraceptive Use","COVID-19","Health worker visit"))
+	data.frame( implication=unlist(lapply(implications,tos)),
+		pvalue=unlist( lapply( implications, tst ) ) )}
+```
+
