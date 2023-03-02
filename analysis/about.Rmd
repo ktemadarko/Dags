@@ -7,10 +7,42 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+What is the causal effect of fertility intention on pregnancy among sexual active women in Burkina Faso? Analysis of Burkina Faso Performance, Monitoring and Accountability longitudinal survey (PMA) 2020-2021
+
+Is the a mediation effect of contraceptive use in causal path between fertility intention and pregnancy outcomes?
+
+[![](https://mermaid.ink/img/pako:eNqdlFFPwjAQx7_KpbzCg8Yg9MFEmWAUiEqMDysPpb2xxq0lXYcxhO9uN2Ichm3qW9Pe7-7_v8t1R4SRSChhem35JobpM9Mi4VkWYASRsplLcIuJPyYJ7Ug5OBOXXcicNW9IO9G5QBxWiAyF0bKKRIPRRb9fQVCuRBVxsbLHxLAavvKxTF-HgQFtHLxz7cAZiPkWgYOIVSKXlNKKVOj1rmAUvmQoYWS0s1zgxqktLoHpk_eerwov-Lvw0eJa-2rF67fGmgwFch_OvcA6rM1DWfU2DJQsY_IMf5Rguun12EKR66HWQVOegpy2GLkJX385hfGpXjE9bh9CQc9qHYzrZjD_n_RS7KSx-ZM_Nf-pVvqkpfmLBgekS1K0KVfSb-yOaQBGXIwpMkL9UWLE88Qxv8x7H8pzZxYfWhDqbI5dkm8kdxgo7jc9_bpEqZyxs8MnUP4F-0-wHnJS?type=png)](https://mermaid.live/edit#pako:eNqdlFFPwjAQx7_KpbzCg8Yg9MFEmWAUiEqMDysPpb2xxq0lXYcxhO9uN2Ichm3qW9Pe7-7_v8t1R4SRSChhem35JobpM9Mi4VkWYASRsplLcIuJPyYJ7Ug5OBOXXcicNW9IO9G5QBxWiAyF0bKKRIPRRb9fQVCuRBVxsbLHxLAavvKxTF-HgQFtHLxz7cAZiPkWgYOIVSKXlNKKVOj1rmAUvmQoYWS0s1zgxqktLoHpk_eerwov-Lvw0eJa-2rF67fGmgwFch_OvcA6rM1DWfU2DJQsY_IMf5Rguun12EKR66HWQVOegpy2GLkJX385hfGpXjE9bh9CQc9qHYzrZjD_n_RS7KSx-ZM_Nf-pVvqkpfmLBgekS1K0KVfSb-yOaQBGXIwpMkL9UWLE88Qxv8x7H8pzZxYfWhDqbI5dkm8kdxgo7jc9_bpEqZyxs8MnUP4F-0-wHnJS)
 
 ```{r setup}
 library(dagitty)
+```
+
+```{r fertility_diagram, eval=FALSE, include=FALSE}
+# Fertility Intentions
+
+library(DiagrammeR)
+mermaid("
+graph LR
+classDef firstlevel fill:#dd81c7, stroke:#f2cee9
+classDef secondlevel fill:#f8C466, stroke:#fedbc9
+classDef thirdlevel fill:#f96, stroke:#fb9
+
+A[Do not want to have a child]:::firstlevel  --> C[Used Contraceptive] 
+C[Used Contraceptive]:::secondlevel --> H[Pregnant]:::thirdlevel
+C[Used Contraceptive]--> J[Not Pregnant]:::thirdlevel
+
+A[Do not want to have a child] --> E[Did not use Contraceptive]
+E[Did not use Contraceptive]:::secondlevel--> K[Pregnant]:::thirdlevel
+E[Did not use Contraceptive]--> L[Not Pregnant]:::thirdlevel
+
+B[Want to have a child]:::firstlevel  --> F[Used Contraceptive]
+F[Used Contraceptive]:::secondlevel--> M[Pregnant]:::thirdlevel
+F[Used Contraceptive]--> N[Not Pregnant]:::thirdlevel
+
+B[Want to have a child] --> G[Did not use Contraceptive]
+G[Did not use Contraceptive]:::secondlevel--> Q[Pregnant]:::thirdlevel
+G[Did not use Contraceptive]--> S[Not Pregnant]:::thirdlevel" )
+
 ```
 
 ```{r dagitty}
@@ -22,4 +54,3 @@ implications <- list(c("Contraceptive Use","COVID-19","Health worker visit"))
 	data.frame( implication=unlist(lapply(implications,tos)),
 		pvalue=unlist( lapply( implications, tst ) ) )}
 ```
-
