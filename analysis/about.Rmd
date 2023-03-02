@@ -11,9 +11,10 @@ What is the causal effect of fertility intention on pregnancy among sexual activ
 
 Is the a mediation effect of contraceptive use in causal path between fertility intention and pregnancy outcomes?
 
-[![](https://mermaid.ink/img/pako:eNqdlFFPwjAQx7_KpbzCg8Yg9MFEmWAUiEqMDysPpb2xxq0lXYcxhO9uN2Ichm3qW9Pe7-7_v8t1R4SRSChhem35JobpM9Mi4VkWYASRsplLcIuJPyYJ7Ug5OBOXXcicNW9IO9G5QBxWiAyF0bKKRIPRRb9fQVCuRBVxsbLHxLAavvKxTF-HgQFtHLxz7cAZiPkWgYOIVSKXlNKKVOj1rmAUvmQoYWS0s1zgxqktLoHpk_eerwov-Lvw0eJa-2rF67fGmgwFch_OvcA6rM1DWfU2DJQsY_IMf5Rguun12EKR66HWQVOegpy2GLkJX385hfGpXjE9bh9CQc9qHYzrZjD_n_RS7KSx-ZM_Nf-pVvqkpfmLBgekS1K0KVfSb-yOaQBGXIwpMkL9UWLE88Qxv8x7H8pzZxYfWhDqbI5dkm8kdxgo7jc9_bpEqZyxs8MnUP4F-0-wHnJS?type=png)](https://mermaid.live/edit#pako:eNqdlFFPwjAQx7_KpbzCg8Yg9MFEmWAUiEqMDysPpb2xxq0lXYcxhO9uN2Ichm3qW9Pe7-7_v8t1R4SRSChhem35JobpM9Mi4VkWYASRsplLcIuJPyYJ7Ug5OBOXXcicNW9IO9G5QBxWiAyF0bKKRIPRRb9fQVCuRBVxsbLHxLAavvKxTF-HgQFtHLxz7cAZiPkWgYOIVSKXlNKKVOj1rmAUvmQoYWS0s1zgxqktLoHpk_eerwov-Lvw0eJa-2rF67fGmgwFch_OvcA6rM1DWfU2DJQsY_IMf5Rguun12EKR66HWQVOegpy2GLkJX385hfGpXjE9bh9CQc9qHYzrZjD_n_RS7KSx-ZM_Nf-pVvqkpfmLBgekS1K0KVfSb-yOaQBGXIwpMkL9UWLE88Qxv8x7H8pzZxYfWhDqbI5dkm8kdxgo7jc9_bpEqZyxs8MnUP4F-0-wHnJS)
+[![](https://mermaid.ink/img/pako:eNqdk8tOIzEQRX-lZLZhwQxkwAukPJQgXhomIizaLBy7TFu4y5Ht5iHEv2NnpKEzEEDsWl33uE6VVE9MeY2MM0E3QS5rOP0jSDkZ4xgNWLLJ4R06MNY5vtXf0buLfg9iCv4W-ZbeMz9x0QGMDXGN0Hp_R_16JcwPhXjQISIqT7qLmP3Rbr_TxKBeqC6SahvWiYNufJGzgq6qGT600rlHkCrZO4R730jKI8GwDbeWJExk9Nec839Tbm8fDr5O5vRQ0KAaeyCf4F5SguShlpmQoGrrdHm9sxLICIyqy4gaRp5SkAqXpcM1CBrlbHcZJXtU_Q54Q_nl8tLr3DldysfVeW68KfKZ26rDvBpbvcq0Ef-TEjRfdyrAyUaleSmffqI0rK6-uKfJe3sSNHmrdLZRaVLK599TWklMP1zP9K3LxUaXaSnPPnBhPdZgaKTV-RyfBAEIlmpsUDCePzUa2bok8qU-56hsk589kmI8hRZ7rF1qmXBsZT7jhnEjXcx_Udvkw9nfE19d-vMLq-hhiQ?type=png)](https://mermaid.live/edit#pako:eNqdk8tOIzEQRX-lZLZhwQxkwAukPJQgXhomIizaLBy7TFu4y5Ht5iHEv2NnpKEzEEDsWl33uE6VVE9MeY2MM0E3QS5rOP0jSDkZ4xgNWLLJ4R06MNY5vtXf0buLfg9iCv4W-ZbeMz9x0QGMDXGN0Hp_R_16JcwPhXjQISIqT7qLmP3Rbr_TxKBeqC6SahvWiYNufJGzgq6qGT600rlHkCrZO4R730jKI8GwDbeWJExk9Nec839Tbm8fDr5O5vRQ0KAaeyCf4F5SguShlpmQoGrrdHm9sxLICIyqy4gaRp5SkAqXpcM1CBrlbHcZJXtU_Q54Q_nl8tLr3DldysfVeW68KfKZ26rDvBpbvcq0Ef-TEjRfdyrAyUaleSmffqI0rK6-uKfJe3sSNHmrdLZRaVLK599TWklMP1zP9K3LxUaXaSnPPnBhPdZgaKTV-RyfBAEIlmpsUDCePzUa2bok8qU-56hsk589kmI8hRZ7rF1qmXBsZT7jhnEjXcx_Udvkw9nfE19d-vMLq-hhiQ)
 
 ```{r setup}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(dagitty)
 ```
 
@@ -23,9 +24,13 @@ library(dagitty)
 library(DiagrammeR)
 mermaid("
 graph LR
+classDef initlevel fill:#61d4b6, stroke:#d5f3eb
 classDef firstlevel fill:#dd81c7, stroke:#f2cee9
 classDef secondlevel fill:#f8C466, stroke:#fedbc9
 classDef thirdlevel fill:#f96, stroke:#fb9
+
+W[Sexually active woman in Burkina Faso]:::initlevel-->A
+W[Sexually active woman in Burkina Faso]-->B
 
 A[Do not want to have a child]:::firstlevel  --> C[Used Contraceptive] 
 C[Used Contraceptive]:::secondlevel --> H[Pregnant]:::thirdlevel
@@ -45,12 +50,14 @@ G[Did not use Contraceptive]--> S[Not Pregnant]:::thirdlevel" )
 
 ```
 
-```{r dagitty}
+```{r dagitty, eval=FALSE, include=FALSE}
 testImplications <- function( covariance.matrix, sample.size ){
-	library(ggm)
+library(ggm)
 	tst <- function(i){ pcor.test( pcor(i,covariance.matrix), length(i)-2, sample.size )$pvalue }
 tos <- function(i){ paste(i,collapse=" ") }
-implications <- list(c("Contraceptive Use","COVID-19","Health worker visit"))
+implications <- list(c("pregnant","fertility intentions","use contraceptive"))
 	data.frame( implication=unlist(lapply(implications,tos)),
-		pvalue=unlist( lapply( implications, tst ) ) )}
+		pvalue=unlist( lapply( implications, tst ) ) )
+
+}
 ```
